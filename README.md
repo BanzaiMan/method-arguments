@@ -1,4 +1,4 @@
-# ruby-arguments
+# method-arguments
 Obtain arguments passed to the current Ruby method and their values in a single call
 
 This is most likely to be useful when logging debugging information.
