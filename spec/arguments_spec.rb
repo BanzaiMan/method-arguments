@@ -54,8 +54,8 @@ describe '#__arguments__' do
   end
 
   it 'works with a method that takes arbitrary number of keyword arguments' do
-    expect(subject.keywords_rest(a: "once", b: "doce", c: "trece", d: "catorce", e: "quince")).to eq [
-      [:a, "once"], [:b, "doce"], [:rest, {:c=>"trece", :d=>"catorce", :e=>"quince"}]
+    expect(subject.keywords_rest(a: "once", c: "doce", b: "trece", d: "catorce", e: "quince")).to eq [
+      [:a, "once"], [:b, "trece"], [:rest, {:c=>"doce", :d=>"catorce", :e=>"quince"}]
     ]
   end
 end
