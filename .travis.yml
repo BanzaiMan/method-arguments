@@ -9,3 +9,21 @@ cache:
 
 script:
   - bundle exec rspec spec
+
+stages:
+  - test
+  - deploy
+
+jobs:
+  include:
+    - stage: deploy
+      script: skip
+      deploy:
+        provider: rubygems
+        api_key:
+          secure: "BoNo0ixQFucOC1vyHG+X/e86FFNYIFk6nhqOfeo3hBISvSvnb+osyguqFGTT6h0S9bf8rs3/9yIZqH+pdGIFWpMKyGfYqCPUGSiC9oD8ArdSFS/A8FZKhB36w0FRap6dCXGfR06rukAaf1a/TFg+xjYqBtKp5yV34Xy6VgtEaU7gU/tuZR2GIkt1XjV6djBQlfAx2QqD2R2DNtIMAjV7/wMeba2Pd3rtL3eGDd/Cfx398N+wRAQKwkHHE3jnnXsQjj9A5pVr9jMGJU/djCWUqZIfv7iRD0CsEiTUI3VYTS4GxaZIz2E9BZXZCwH1sbIM4SvmL5VKsjKTxkEcicGXY/kTQ8fxMtVrJ3d/9kd1748QcVkYPCf7hKcQkkDMuVqOu0cbwy47WCzlgOWA1OVPHaAXCEWFvgUlpadjv4wvxNaNhyTyO2Au+wsB+FkUPChtULhEg3CaIZfelCg5VbQZJElPsY6PzWRDii6RNh+TelGMmyZ/AQhygvMsoErPLFnsAALXDxHs73ZKWzpLo+G/pxs/IkMl0fwHECS+gAJJSRXzrorkYUudUbGXAv4aXxDs1h+m6vv5Bgg1p6YAjkiq8Rs3V2nsNDwYUkOx/cDvzMMnS+BclQ4uWOCE02QsN1+yUw7VfF41zPDYLPcavJfyPoNhPRZVzLcL4sVO7BQpomU="
+        gemspec: arguments.gemspec
+        skip_cleanup: true
+        on:
+          all_branches: true
+      if: tag IS present
