@@ -6,3 +6,6 @@ rvm:
 
 cache:
   bundler: true
+
+script:
+  - bundle exec rspec spec
